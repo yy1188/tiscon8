@@ -70,7 +70,17 @@ public class EstimateService {
      * @return 概算見積もり結果の料金
      */
     public Integer getPrice(UserOrderDto dto) {
+        double n=1;
+        if (dto.getMonth() == 3 || dto.getMonth() == 4){
+            n=1.5;
+        }
+        else if (dto.getMonth() == 9){
+            n=1.2;
+        }
         double distance = estimateDAO.getDistance(dto.getOldPrefectureId(), dto.getNewPrefectureId());
+        if (dto.getOldPrefectureId().equals(dto.getNewPrefectureId())){
+            distance = 50;
+        }
         // 小数点以下を切り捨てる
         int distanceInt = (int) Math.floor(distance);
 
@@ -91,8 +101,8 @@ public class EstimateService {
         if (dto.getWashingMachineInstallation()) {
             priceForOptionalService = estimateDAO.getPricePerOptionalService(OptionalServiceType.WASHING_MACHINE.getCode());
         }
-
-        return priceForDistance + pricePerTruck + priceForOptionalService;
+        int DistanceTruck = (int) Math.floor((priceForDistance + pricePerTruck)*n);
+        return DistanceTruck+ priceForOptionalService;
     }
 
     /**

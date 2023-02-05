@@ -95,6 +95,16 @@ body {
     font-family: "Roboto";
 }
 
+.sub-title-red {
+    margin: 48px 0px 32px;
+    color: #f80505;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 21px;
+    font-family: "Roboto";
+}
+
 .box-text {
     display:inline-block;
     width: 250px;
