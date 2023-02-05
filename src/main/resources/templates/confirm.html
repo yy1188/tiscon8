@@ -28,6 +28,9 @@
     
     <div class="col-sm-12">
       <div class="sub-title">お客様情報</div>
+      <ul  th:if="${#fields.hasErrors('customerName')}"> 
+        <li th:each="err : ${#fields.errors('customerName')}" th:text="'氏名は'+${err}" style="color:red;"></li>
+      </ul>
       <ul  th:if="${#fields.hasErrors('tel')}"> 
         <li th:each="err : ${#fields.errors('tel')}" th:text="'電話番号はハイフン無しで'+${err}" style="color:red;"></li>
       </ul>
@@ -104,6 +107,9 @@
     </div>
     <div class="col-sm-12">
       <div class="sub-title">引っ越しのご予定</div>
+      <ul  th:if="${#fields.hasErrors('month')}"> 
+        <li th:each="err : ${#fields.errors('month')}" th:text="'引っ越しのご検討の月は'+${err}" style="color:red;"></li>
+      </ul>
         <table class="table table-bordered">
           <col span="1" style="background-color: #FFFFFF;">
           <col span="2" style="background-color: #FFFFFF;">

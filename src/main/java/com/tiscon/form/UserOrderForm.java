@@ -5,6 +5,8 @@ import com.tiscon.validator.Numeric;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 
 /**
  * 顧客が入力する見積もり情報を保持するクラス。
@@ -36,6 +38,8 @@ public class UserOrderForm {
     @NotBlank
     private String newAddress;
 
+    @Max(value = 12)
+    @Min(value = 1)
     @Numeric
     @NotBlank
     private String month;
